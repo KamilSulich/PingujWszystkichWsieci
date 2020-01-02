@@ -40,9 +40,10 @@ namespace PingujWszystkichWsieci
 
                 if (wynikPinga.Contains("Utracone = 0") || wynikPinga.Contains("Lost = 0"))//jezeli nie utracono jakis pakietow podczas pinga
                 {
-
-                    File.AppendAllText(path, wynikPinga + Environment.NewLine);
-
+                    if (!wynikPinga.Contains("Destination host unreachable."))
+                    {
+                        File.AppendAllText(path, wynikPinga + Environment.NewLine);
+                    }
                 }
             }
         }
